@@ -1,6 +1,15 @@
 package com.tcs.employeeManagement.employee;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.Length;
+
+import javax.persistence.GenerationType;
 
 @Entity
 public class Employee {
@@ -20,9 +29,12 @@ public class Employee {
         this.salary = salary;
     }
     
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
+    @Length(min=3)
+    @Pattern(regexp= "^[A-Za-z]*$")
     private String firstName;
 
     public Integer getId() {
@@ -65,10 +77,14 @@ public class Employee {
         this.salary = salary;
     }
 
+    @Length(min=3)
+    @Pattern(regexp= "^[A-Za-z]*$")
     private String lastName;
     
     private String department;
     
+    @Min(15000)
+    @Max(200000)
     private Integer salary;
     
     @Override

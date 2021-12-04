@@ -2,6 +2,7 @@
   "name": "employeemanagement",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://127.0.0.1:8080",
   "dependencies": {
     "http-proxy-middleware": "^1.0.4",
     "react": "^16.13.1",
@@ -10,9 +11,10 @@
     "styled-components": "^5.1.1"
   },
   "scripts": {
-    "start": "PORT=8000 react-scripts start --disable-host-check",
+    "start": "react-scripts start -p 8000 --disable-host-check",
     "build": "react-scripts build",
     "test": "rm -rf ./test-report.xml && CI=true ./node_modules/.bin/react-scripts test --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit-reporter",
+    "newtest": "react-scripts test --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit-reporter",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
